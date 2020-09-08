@@ -1,0 +1,48 @@
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt; font-family:돋움,굴림; color:#8A8A8A; line-height:160%}
+
+body
+{scrollbar-face-color: white; 
+scrollbar-shadow-color: #8A8A8A; 
+scrollbar-highlight-color: white; 
+scrollbar-3dlight-color: #8A8A8A; 
+scrollbar-darkshadow-color: white; 
+scrollbar-track-color: white;
+scrollbar-arrow-color: #8A8A8A}
+
+A:link    {color: #8A8A8A; text-decoration:none}
+A:visited {color:#8A8A8A; text-decoration:none}
+A:active  {color:#767676; text-decoration:none}
+A:hover  {color:#767676; text-decoration:none}
+
+body {background-color:}
+
+.head {border:solid 1 black;font-family:굴림;font-size:9pt;color:black;background-color:white;height:19px}
+.textarea {border:solid 1 #8A8A8A; background-color:; overflow:auto}
+.input {border:0; background:; background:url(img/dot.gif) repeat-x bottom; line-height:100%}
+.submit {border:solid 1;font-family:굴림;font-size:9pt;color:white;background-color:black;height:19px}
+.thm8 {font-family:Tahoma;font-size:8pt;}
+
+.sjini-dotinput {border:0; color:#BEBEBE; background:; background:url(img/dot.gif) repeat-x bottom; line-height:100%}
+
+.sjini-ok {background-color:#8A8A8A; background-image:url(img/ok.gif); cursor:hand; color:; border:solid 0 #8A8A8A; width=50; height=13px}
+.sjini-back {background-color:#8A8A8A; background-image:url(img/back.gif); cursor:hand; color:; border:solid 0 #8A8A8A; width=50; height=13px}
+
+.sjini-sfont {font-size:7pt; font-family:tahoma,verdana,굴림;}
+.sjini-bfont {font-family:Tahoma,verdana,굴림; font-size:8pt; font-weight:bold}
+.sjini-sbfont {font-size:7pt; font-family:tahoma,verdana,굴림; font-weight:bold}
+.sjini-mfont {font-size:8pt; font-family:tahoma,verdana,굴림;}
+.sjini-nfont {color:#BEBEBE;}
+.sjini-xfont {font-size:11pt; font-family:tahoma,verdana,굴림; font-weight:bold}
+
+.sjini-box {border-top-width:1; border-right-width:0; border-bottom-width:1; border-left-width:0; border-color:#8A8A8A; border-style:solid}
+.sjini-box2 {border-top-width:1; border-right-width:1; border-bottom-width:1; border-left-width:1; border-color:#8A8A8A; border-style:solid}
+.sjini-nbox {background-color:#F0F0F0; border-top-width:1; border-right-width:1; border-bottom-width:1; border-left-width:1; border-color:#8A8A8A; border-style:solid}
+
+.sjini-line {background-color:#8A8A8A; height:1}
+.sjini-dotline {background:url(img/dot.gif); height:1}
+.sjini-blank {background:url(img/blank.gif)}
+.sjini-bg {background:#F0F0F0;}
+
+.sjini-dotw {background-image:url(img/dot.gif)}
+.sjini-doth {background-image:url(img/dot2.gif)}
+

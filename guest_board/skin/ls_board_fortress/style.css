@@ -1,0 +1,18 @@
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt; font-family:굴림; color:black;line-height:150%}
+
+A:link    {color:gray;text-decoration:none;}
+A:visited {color:gray;text-decoration:none;}
+A:active  {color:444444;text-decoration:none;}
+A:hover  {color:444444;text-decoration:none;}
+
+.head {border:solid 1 black;font-family:굴림;font-size:9pt;color:black;background-color:white;height:19px}
+.textarea {border:solid 1 silver; font-family:굴림;font-size:9pt;color:black;background-color:white}
+.input{border:solid 1 silver;font-family:굴림;font-size:9pt;color:black;background-color:white;height:19px;cursor:hand;}
+.submit {border:solid 1;font-family:굴림;font-size:9pt;color:white;background-color:black;height:19px}
+.light {font-family:Tahoma;font-size:8pt;color:gray;}
+.light2 {font-family:Tahoma;font-size:7pt;color:gray;}
+.dark {font-family:Tahoma;font-size:8pt;color:gray;}
+.lifesay {font-family:Tahoma;font-size:7pt;color:EE781A;}
+.lifesay2 {font-family:Tahoma;font-size:8pt;color:EE781A;font-weight:bold;}
+.lifesay3 {font-family:Tahoma;font-size:7pt;color:ffffff;font-weight:bold;}
+.com {font-family:Arial;font-size:7pt;color:gray;font-weight:bold;}

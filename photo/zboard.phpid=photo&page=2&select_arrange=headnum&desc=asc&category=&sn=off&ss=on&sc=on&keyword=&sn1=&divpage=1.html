@@ -1,0 +1,4387 @@
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <!--
+
+-->
+<html> 
+<head>
+	<title></title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel=StyleSheet HREF=skin/sjini_flash_gray/style.css type=text/css title=style>
+	<script language='JavaScript'>
+	var select_obj;
+	function ZB_layerAction(name,status) { 
+		var obj=document.all[name];
+		var _tmpx,_tmpy, marginx, marginy;
+		_tmpx = event.clientX + parseInt(obj.offsetWidth);
+		_tmpy = event.clientY + parseInt(obj.offsetHeight);
+		_marginx = document.body.clientWidth - _tmpx;
+		_marginy = document.body.clientHeight - _tmpy ;
+		if(_marginx < 0)
+			_tmpx = event.clientX + document.body.scrollLeft + _marginx ;
+		else
+			_tmpx = event.clientX + document.body.scrollLeft ;
+		if(_marginy < 0)
+			_tmpy = event.clientY + document.body.scrollTop + _marginy +20;
+		else
+			_tmpy = event.clientY + document.body.scrollTop ;
+		obj.style.posLeft=_tmpx-13;
+		obj.style.posTop=_tmpy-12;
+		if(status=='visible') {
+			if(select_obj) {
+				select_obj.style.visibility='hidden';
+				select_obj=null;
+			}
+			select_obj=obj;
+		}else{
+			select_obj=null;
+		}
+		obj.style.visibility=status; 
+	}
+
+
+	function print_ZBlayer(name, homepage, mail, member_no, boardID, writer, traceID, traceType, isAdmin, isMember) {
+		var printHeight = 0;
+		var printMain="";
+	
+		if(homepage) {
+			printMain = "<tr onMouseOver=this.style.backgroundColor='#bbbbbb' onMouseOut=this.style.backgroundColor='' onMousedown=window.open('"+homepage+"');><td style=font-family:굴림;font-size:9pt height=18 nowrap>&nbsp;<img src=images/n_homepage.gif border=0 align=absmiddle>&nbsp;&nbsp;홈페이지&nbsp;&nbsp;</td></tr>";
+			printHeight = printHeight + 16;
+		}
+		if(mail) {
+			printMain = printMain +	"<tr onMouseOver=this.style.backgroundColor='#bbbbbb' onMouseOut=this.style.backgroundColor='' onMousedown=window.open('open_window.php?mode=m&str="+mail+"','ZBremote','width=1,height=1,left=1,top=1');><td style=font-family:굴림;font-size:9pt height=18 nowrap>&nbsp;<img src=images/n_mail.gif border=0 align=absmiddle>&nbsp;&nbsp;메일 보내기&nbsp;&nbsp;</td></tr>";
+			printHeight = printHeight + 16;
+		}
+		if(member_no) {
+			if(isMember) {
+				printMain = printMain +	"<tr onMouseOver=this.style.backgroundColor='#bbbbbb' onMouseOut=this.style.backgroundColor='' onMousedown=window.open('view_info.php?member_no="+member_no+"','view_info','width=400,height=510,toolbar=no,scrollbars=yes');><td style=font-family:굴림;font-size:9pt height=18 nowrap>&nbsp;<img src=images/n_memo.gif border=0 align=absmiddle>&nbsp;&nbsp;쪽지 보내기&nbsp;&nbsp;</td></tr>";
+				printHeight = printHeight + 16;
+			}
+			printMain = printMain +	"<tr onMouseOver=this.style.backgroundColor='#bbbbbb' onMouseOut=this.style.backgroundColor='' onMousedown=window.open('view_info2.php?member_no="+member_no+"','view_info','width=400,height=510,toolbar=no,scrollbars=yes');><td style=font-family:굴림;font-size:9pt height=18 nowrap>&nbsp;<img src=images/n_information.gif border=0 align=absmiddle>&nbsp;&nbsp;회원정보 보기&nbsp;&nbsp;</td></tr>";
+			printHeight = printHeight + 16;
+		}
+		if(writer) {
+			printMain = printMain +	"<tr onMouseOver=this.style.backgroundColor='#bbbbbb' onMouseOut=this.style.backgroundColor='' onMousedown=location.href='zboard.php?id="+boardID+"&sn1=on&sn=on&ss=off&sc=off&keyword="+writer+"';><td style=font-family:굴림;font-size:9pt height=18 nowrap>&nbsp;<img src=images/n_search.gif border=0 align=absmiddle>&nbsp;&nbsp;이름으로 검색&nbsp;&nbsp;</td></tr>";
+			printHeight = printHeight + 16;
+		}
+		if(isAdmin) {
+			if(member_no) {
+				printMain = printMain +	"<tr onMouseOver=this.style.backgroundColor='#bbbbbb' onMouseOut=this.style.backgroundColor='' onMousedown=window.open('open_window.php?mode=i&str="+member_no+"','ZBremote','width=1,height=1,left=1,top=1');><td style=font-family:굴림;font-size:9pt height=18 nowrap>&nbsp;<img src=images/n_modify.gif border=0 align=absmiddle>&nbsp;&nbsp;<font color=darkred>회원정보 변경&nbsp;&nbsp;</td></tr>";
+				printHeight = printHeight + 16;
+			}
+			printMain = printMain +	"<tr onMouseOver=this.style.backgroundColor='#bbbbbb' onMouseOut=this.style.backgroundColor='' onMousedown=window.open('open_window.php?mode="+traceType+"&str="+traceID+"','ZBremote','width=1,height=1,left=1,top=1');><td style=font-family:굴림;font-size:9pt height=18 nowrap>&nbsp;<img src=images/n_relationlist.gif border=0 align=absmiddle>&nbsp;&nbsp;<font color=darkred>관련글 추적</font>&nbsp;&nbsp;</td></tr>";
+			printHeight = printHeight + 16;
+		
+		}
+		var printHeader = "<div id='"+name+"' style='position:absolute; left:10px; top:25px; width:127; height: "+printHeight+"; z-index:1; visibility: hidden' onMousedown=ZB_layerAction('"+name+"','hidden')><table border=0><tr><td colspan=3 onMouseover=ZB_layerAction('"+name+"','hidden') height=3></td></tr><tr><td width=5 onMouseover=ZB_layerAction('"+name+"','hidden') rowspan=2>&nbsp;</td><td height=5></td></tr><tr><td><table style=cursor:hand border='0' cellspacing='1' cellpadding='0' bgcolor='black' width=100% height=100%><tr><td valign=top bgcolor=white><table border=0 cellspacing=0 cellpadding=3 width=100% height=100%>";
+		var printFooter = "</table></td></tr></table></td><td width=5 rowspan=2 onMouseover=ZB_layerAction('"+name+"','hidden')>&nbsp;</td></tr><tr><td colspan=3 height=10 onMouseover=ZB_layerAction('"+name+"','hidden')></td></tr></table></div>";
+	
+		document.writeln(printHeader+printMain+printFooter);
+	}
+</script>
+	
+<script language="javascript">
+browserName = navigator.appName;
+browserVer = parseInt(navigator.appVersion);
+if(browserName == "Netscape" && browserVer >= 3){ init = "net"; }
+else { init = "ie"; }
+
+
+if(((init == "net")&&(browserVer >=3))||((init == "ie")&&(browserVer >= 4))){
+
+ sn_on=new Image;
+ sn_off=new Image;
+ sn_on.src= "skin/sjini_flash_gray/name_on.gif";
+ sn_off.src= "skin/sjini_flash_gray/name_off.gif";
+
+ ss_on=new Image;
+ ss_off=new Image;
+ ss_on.src= "skin/sjini_flash_gray/subject_on.gif";
+ ss_off.src= "skin/sjini_flash_gray/subject_off.gif";
+
+ sc_on=new Image;
+ sc_off=new Image;
+ sc_on.src= "skin/sjini_flash_gray/content_on.gif";
+ sc_off.src= "skin/sjini_flash_gray/content_off.gif";
+
+}
+
+function OnOff(name) {
+if(((init == "net")&&(browserVer >=3))||((init == "ie")&&(browserVer >= 4))) {
+  if(document.search[name].value=='on')
+  {
+   document.search[name].value='off';
+   ImgSrc=eval(name+"_off.src");
+   document[name].src=ImgSrc;
+  }
+  else
+  {
+   document.search[name].value='on';
+   ImgSrc=eval(name+"_on.src");
+   document[name].src=ImgSrc;
+  }
+ }
+}
+</script>
+
+<script language="javascript">
+  function reverse() {
+   var i, chked=0;
+   if(confirm('목록을 반전하시겠습니까?\n\n반전을 원하지 않는다면 취소를 누르시면 다음으로 넘어갑니다'))
+   {
+    for(i=0;i<document.list.length;i++)
+    {
+     if(document.list[i].type=='checkbox')
+     {
+      if(document.list[i].checked) { document.list[i].checked=false; }
+      else { document.list[i].checked=true; }
+     }
+    }
+   }
+   for(i=0;i<document.list.length;i++)
+   {
+    if(document.list[i].type=='checkbox')
+    {
+     if(document.list[i].checked) chked=1;
+    }
+   }
+   if(chked) {
+    if(confirm('선택된 항목을 보시겠습니까?'))
+     {
+      document.list.selected.value='';
+      document.list.exec.value='view_all';
+      for(i=0;i<document.list.length;i++)
+      {
+       if(document.list[i].type=='checkbox')
+       {
+        if(document.list[i].checked)
+        {
+         document.list.selected.value=document.list[i].value+';'+document.list.selected.value;
+        }
+       }
+      }
+      document.list.submit();
+      return true;
+     }
+    }
+   }
+
+ function delete_all() {
+  var i, chked=0;
+  for(i=0;i<document.list.length;i++)
+  {
+   if(document.list[i].type=='checkbox')
+   {
+    if(document.list[i].checked) chked=1;
+    }
+   }
+  if(chked)
+  {
+    document.list.selected.value='';
+    document.list.exec.value='delete_all';
+    for(i=0;i<document.list.length;i++)
+    {
+     if(document.list[i].type=='checkbox')
+     {
+      if(document.list[i].checked)
+      {
+       document.list.selected.value=document.list[i].value+';'+document.list.selected.value;
+      }
+     }
+    }
+    window.open("select_list_all.php?id=photo&selected="+document.list.selected.value,"게시물정리","width=260,height=180,toolbars=no,resize=no,scrollbars=no");
+  }
+  else {alert('정리할 게시물을 선택하여 주십시요');}
+ }
+
+ function category_change(obj) {
+  var myindex=obj.selectedIndex;
+  document.search.category.value=obj.options[myindex].value;
+  document.search.submit();
+  return true;
+ }
+
+//-->
+</script>
+</head>
+<body topmargin='0'  leftmargin='0' marginwidth='0' marginheight='0'  bgcolor=white >
+			<div align=center>
+
+			<table border=0 cellspacing=0 cellpadding=0 width=650 height=1 style="table-layout:fixed;"><col width=100%></col><tr><td><img src=images/t.gif border=0 width=98% height=1 name=zb_get_table_width><br><img src=images/t.gif border=0 name=zb_target_resize width=1 height=1></td></tr></table>
+			
+<script language=JavaScript>
+function findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+function swapImage() {
+  var i,j=0,x,a=swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+</script>
+
+<!-- HTML 시작 -->
+
+<table border=0 cellspacing=0 cellpadding=0 width=650>
+<tr>
+  <td width=1></td>
+    <td align=right><span class=sjini-sfont>
+     <a onfocus=blur() href=# onclick="window.open('member_join.php?group_no=1','zbMemberJoin','width=560,height=590,toolbars=no,resizable=yes,scrollbars=yes')">JoIn</a>
+    <a onfocus=blur() href="login.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&s_url=/zboard/zboard.php?id=photo&page=2&select_arrange=headnum&desc=asc&category=&sn=off&ss=on&sc=on&keyword=&sn1=&divpage=1">LogIn</a>
+        <Zeroboard Memo</a>
+    <Zeroboard InFo</a>    
+    <Zeroboard LogOut</a>
+    <Zeroboard SetUp</a>
+    &nbsp;</span>
+  </td>
+</tr>
+<tr>
+   <td colspan=2 align=center>
+   <table border=0 width=100% cellpadding=0 cellspacing=0>
+     <tr><td colspan=3 class=sjini-dotw height=1></td></tr>
+     <tr>
+        <td width=1 class=sjini-doth></td>
+        <td align=center class=sjini-bg style="padding-left:10; padding-right:10; padding-top:3; padding-bottom:3;">
+        <span class=sjini-xfont>+ - + Gallery + - +</span><br>
+        보시면서 잠시나마 즐거운 시간 되시길 바랍니다.. ^^*
+        </td>
+        <td width=1 class=sjini-doth></td>
+     </tr>
+     <tr><td colspan=3 class=sjini-dotw height=1></td></tr>
+   </table>
+   </td>
+</tr>
+<tr><td colspan=2 class=sjini-blank height=10></td></tr>
+</table>
+
+  
+<table border=0 cellspacing=0 cellpadding=0 width=650><tr><td width=100% valign=top>
+
+
+<div ID="viewDIV" STYLE="position:absolute; visibility:hide;"></div>
+<script language="javascript">
+
+////////////////////////////////////////////////////////////////////////////////////
+// CONFIGURATION
+////////////////////////////////////////////////////////////////////////////////////
+
+ var fcolor = "#ffffff";	// Main background color
+ var textcolor = "#8A8A8A";	// Text color
+ var border_size = "1";		// border size, 1-3
+ var border_color = "#8A8A8A";	// Border color
+ var width = "200";		// 팝업 박스의 넓이, 100 - 300
+	
+////////////////////////////////////////////////////////////////////////////////////
+// END CONFIGURATION
+////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////
+// END CONFIGURATION
+////////////////////////////////////////////////////////////////////////////////////
+
+ns4 = (document.layers)? true:false
+ie4 = (document.all)? true:false
+
+// Microsoft Stupidity Check.
+if (ie4) {
+	if (navigator.userAgent.indexOf('MSIE 5')>0) {
+		ie5 = true;
+	} else {
+		ie5 = false; }
+} else {
+	ie5 = false;
+}
+
+var x = 0;
+var y = 0;
+var offsetx = 10;
+var offsety = 10;
+var popup_on = 0;
+var palign = 0;		// Default 팝업 박스의 위치, 0:center/1:right/2:left
+
+if ( (ns4) || (ie4) ) {
+	if (ns4) over = document.viewDIV
+	if (ie4) over = viewDIV.style
+	document.onmousemove = mouseMove
+	if (ns4) document.captureEvents(Event.MOUSEMOVE)
+}
+
+// Clears popups if appropriate
+function viewoff() {
+	if ( (ns4) || (ie4) ) {
+		popup_on = 0;
+		hideObject(over);
+	}
+	palign = 0	
+}
+
+// Non public functions. These are called by other functions etc.
+
+// Simple popup
+function viewon(text, left) {
+	txt = "<TABLE WIDTH="+width+" BORDER=0 CELLPADDING="+border_size+" CELLSPACING=0 BGCOLOR=\""+border_color+"\"><TR><TD><TABLE WIDTH=100% BORDER=0 CELLPADDING=2 CELLSPACING=0 BGCOLOR=\""+fcolor+"\"><TR><TD><FONT FACE=\"Arial,Helvetica\" COLOR=\""+textcolor+"\" SIZE=\"-2\">"+text+"</FONT></TD></TR></TABLE></TD></TR></TABLE>"
+	layerWrite(txt);
+	if(left) palign = left;
+	disp(palign);
+}
+
+// Common calls
+function disp(palign) {
+	if ( (ns4) || (ie4) ) {
+		if (popup_on == 0) 	{
+			if (palign == 0) { // Center
+				moveTo(over,x+offsetx-(width/2),y+offsety);
+			}
+			if (palign == 1) { // Right
+				moveTo(over,x+offsetx,y+offsety);
+			}
+			if (palign == 2) { // Left
+				moveTo(over,x-offsetx-width,y+offsety);
+			}
+			showObject(over);
+			popup_on = 1;
+		}
+	}
+// Here you can make the text goto the statusbar.
+}
+
+// Moves the layer
+function mouseMove(e) {
+	if (ns4) {x=e.pageX; y=e.pageY;}
+	if (ie4) {x=event.x; y=event.y;}
+	if (ie5) {x=event.x+document.body.scrollLeft; y=event.y+document.body.scrollTop;}
+	if (popup_on) {
+		if (palign == 0) { // Center
+			moveTo(over,x+offsetx-(width/2),y+offsety);
+		}
+		if (palign == 1) { // Right
+			moveTo(over,x+offsetx,y+offsety);
+		}
+		if (palign == 2) { // Left
+			moveTo(over,x-offsetx-width,y+offsety);
+		}
+	}
+}
+
+// Writes to a layer
+function layerWrite(txt) {
+        if (ns4) {
+                var lyr = document.viewDIV.document
+                lyr.write(txt)
+                lyr.close()
+        }
+        else if (ie4) document.all["viewDIV"].innerHTML = txt
+}
+
+// Make an object visible
+function showObject(obj) {
+        if (ns4) obj.visibility = "show"
+        else if (ie4) obj.visibility = "visible"
+}
+
+// Hides an object
+function hideObject(obj) {
+        if (ns4) obj.visibility = "hide"
+        else if (ie4) obj.visibility = "hidden"
+}
+
+// Move a layer
+function moveTo(obj,xL,yL) {
+        obj.left = xL
+        obj.top = yL
+}
+
+</script>
+
+
+
+<table border=0 cellspacing=0 cellpadding=0 width=100%>
+<tr align=center>
+<form method=post name=list action=list_all.php>
+<input type=hidden name=page value=2>
+<input type=hidden name=id value=photo>
+<input type=hidden name=select_arrange value=headnum>
+<input type=hidden name=desc value=asc>
+<input type=hidden name=page_num value=100>
+<input type=hidden name=selected>
+<input type=hidden name=exec>
+<input type=hidden name=keyword value="">
+<input type=hidden name=sn value="off">
+<input type=hidden name=ss value="on">
+<input type=hidden name=sc value="on">
+
+
+
+
+
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/1134146792/3.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/1134146792/3.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="543">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/11.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/11.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="542">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/12.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/12.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="541">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/21.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/21.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="540">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/22.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/22.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="539">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/23.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/23.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="538">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/24.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/24.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="537">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/26.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/26.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="536">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/27.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/27.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="535">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/28.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/28.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="534">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/29.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(915,1230); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/29.jpg width=75 height=100 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="533">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/30.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/30.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="532">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/1134146530/31.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/1134146530/31.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="531">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/32.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/32.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="530">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/34.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/34.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="528">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/35.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/35.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="527">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/37.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/37.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="526">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/38.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/38.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="525">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/41.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/41.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="524">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/42_2.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/42_2.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="523">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/42_3.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/42_3.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="522">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/43.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(915,1230); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/43.jpg width=75 height=100 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="521">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/44.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/44.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="520">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/51.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/51.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="519">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/52.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/52.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="518">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/54.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/54.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="517">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/61.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(915,1230); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/61.jpg width=75 height=100 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="516">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/63.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/63.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="515">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/64.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/64.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="514">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/65.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/65.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="513">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/66.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/66.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="512">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/67.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/67.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="511">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/축제_065.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/축제_065.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="510">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/축제_068.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/축제_068.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="509">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/축제_082.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/축제_082.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="508">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/축제_087.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/축제_087.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="507">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/축제_093.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(915,1230); new_win.focus()" 
+ 		    onMouseOver="viewon('.', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/축제_093.jpg width=75 height=100 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="506">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/축제_094.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(915,1230); new_win.focus()" 
+ 		    onMouseOver="viewon('ㅍ', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/축제_094.jpg width=75 height=100 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="505">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/축제_095.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('ㅍ', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/축제_095.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="504">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/축제_102.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('ㅋ', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/축제_102.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="503">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/축제_125.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(915,1230); new_win.focus()" 
+ 		    onMouseOver="viewon('..', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/축제_125.jpg width=75 height=100 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="502">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/축제_126.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('..', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/축제_126.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="501">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300069.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('발표현장 준서~', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300069.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="500">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300065.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('발표현장 정연누나 ~', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300065.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="499">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300067.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('도깨비 도로에서 ', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300067.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="498">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300059.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('Best Paper를 받은 정연누나', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300059.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="497">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300032.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('이병헌 따라하다 다리에 쥐난 사진. ㅡㅡ;', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300032.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="496">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300054.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('용두암에서 찰칵~', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300054.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="495">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300035.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('랩단체사진이요', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300035.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="494">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300026.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('준서와 나. ㅡㅡ;&lt;br /&gt;서로 무관심', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300026.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="493">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300020.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('교수님 ㅎㅎ ', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300020.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="492">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300017.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('섭지코지 정상&lt;br /&gt;유채꽃밭에서 ^^', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300017.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="491">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300010.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('섭지코지에서 상엽형과 준서', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300010.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="490">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300009.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('올인의 촬영지 섭지코지 ', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300009.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="489">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300003.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('상엽형과 교수님 ^^', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300003.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="488">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/SV300002.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('11월 24~26일까지 있었던 제주도 컨퍼런스 사진입니다. ^^&lt;br /&gt;성산일출봉가는 길에 ', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/SV300002.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="487">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/ALSeeEdit_1117.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1295,990); new_win.focus()" 
+ 		    onMouseOver="viewon('정보통신정책학회 논문공모전 우수상 수상&lt;br /&gt;&lt;br /&gt;준서사진입니다. ', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/ALSeeEdit_1117.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="486">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/1131334756/P1010266.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;유메에서', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/1131334756/P1010266.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="485">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/1131334725/P1010267.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;야피에서', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/1131334725/P1010267.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="484">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010271.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산입구', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010271.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="483">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010270.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산입구', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010270.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="482">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010272.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산입구', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010272.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="481">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010273.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산입구', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010273.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="480">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010276.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('대둔산 구름다리 위에서', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010276.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="479">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010277.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산구름다리 위에서', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010277.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="478">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010279.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산 구름다리 입구', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010279.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="477">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010280.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(690,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;구름다리 입구', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010280.jpg width=75 height=100 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="476">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010283.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산구름다리', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010283.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="475">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010282.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('대둔산 구름다리에서', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010282.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="474">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010290.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산중턱 쉼터', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010290.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="473">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010291.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산 수직계단 입구에서', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010291.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="472">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/1131333451/P1010292.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(690,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산 수직계단에서 교수님', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/1131333451/P1010292.jpg width=75 height=100 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="471">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010293.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산에서', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010293.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="470">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/1131364491/P1010294.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산에서', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/1131364491/P1010294.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="469">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/1131333216/P1010295.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산 수직계단에서 제호형', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/1131333216/P1010295.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="468">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010296.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산 수직계단 에서 소영이형과 일구형', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010296.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="467">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010299.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산 수직계단 끝에서 만두형', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010299.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="466">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010300.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산 수직계단 정상 도착', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010300.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="465">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/1131335039/P1010302.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;수직계단 정상', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/1131335039/P1010302.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="464">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010303.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;수직계단 정상', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010303.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="463">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010306.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산 정상에서', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010306.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="462">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010310.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(690,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;정상에서 랩장', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010310.jpg width=75 height=100 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="461">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010314.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;정상에서 랩장', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010314.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="460">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/1131332647/P1010315.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(690,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산 정상에서', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/1131332647/P1010315.jpg width=75 height=100 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="459">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010317.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산 정상에서', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010317.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="458">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010321.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;케이블카에서', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010321.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="457">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010322.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('케이블카에서 교수님', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010322.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="456">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010326.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;느티나무 아래에서..순용이형과 경석씨', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010326.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="455">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/P1010328.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1215,930); new_win.focus()" 
+ 		    onMouseOver="viewon('2005 SMIT Homecoming day&lt;br /&gt;대둔산 등정 후, 500년된 느티나무 아래에서 SMITers', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/P1010328.jpg width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="454">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/DSCN8457.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('무지개를 배경으로 ', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/DSCN8457.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="453">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/DSCN8451.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('어릴때는 무지개잡으러 가기도 했는데 ㅎㅎ', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/DSCN8451.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="452">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/DSCN8448.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('정말 간만에 본 무지개 ^^&lt;br /&gt;보물 찾으러 가야지..', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/DSCN8448.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="451">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/DSCN8435.JPG','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(1039,798); new_win.focus()" 
+ 		    onMouseOver="viewon('ICU 하늘위에 나타난 쌍무지개', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/DSCN8435.JPG width=100 height=75 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="450">
+		<Zeroboard		<Zeroboard		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/ALSeeEdit_IMG_2853.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(875,671); new_win.focus()" 
+ 		    onMouseOver="viewon('스위스에서 먹었던 치즈퐁듀', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/ALSeeEdit_IMG_2853.jpg width=100 height=74.5348837209 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="449">
+		<a href="write.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=449&mode=modify.html">		<a href="delete.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=449.html">		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/ALSeeEdit_IMG_2824.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(898,677); new_win.focus()" 
+ 		    onMouseOver="viewon('융프라 정상에서', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/ALSeeEdit_IMG_2824.jpg width=100 height=73.2729331823 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="448">
+		<a href="write.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=448&mode=modify.html">		<a href="delete.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=448.html">		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/ALSeeEdit_IMG_2743.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(670,892); new_win.focus()" 
+ 		    onMouseOver="viewon('퓐센에 있는 노이슈반슈타인성에서', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/ALSeeEdit_IMG_2743.jpg width=75.9860788863 height=100 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="447">
+		<a href="write.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=447&mode=modify.html">		<a href="delete.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=447.html">		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/ALSeeEdit_IMG_2710.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(891,693); new_win.focus()" 
+ 		    onMouseOver="viewon('뮌헨으로 출발하는 Nachtzug를 기다리면서', 1); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/ALSeeEdit_IMG_2710.jpg width=100 height=75.6849315068 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="446">
+		<a href="write.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=446&mode=modify.html">		<a href="delete.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=446.html">		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/ALSeeEdit_IMG_2706.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(692,912); new_win.focus()" 
+ 		    onMouseOver="viewon('훔볼트대학를 세운 훔불트와 함께..^^', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/ALSeeEdit_IMG_2706.jpg width=76.7573696145 height=100 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="445">
+		<a href="write.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=445&mode=modify.html">		<a href="delete.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=445.html">		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/ALSeeEdit_IMG_2707.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(898,677); new_win.focus()" 
+ 		    onMouseOver="viewon('ITS 컨퍼런스가 개최된 베를린 훔볼트대학&lt;br /&gt;아이슈타인인 여기를 다녔다고 하네요. ^^', 0); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/ALSeeEdit_IMG_2707.jpg width=100 height=73.2729331823 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="444">
+		<a href="write.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=444&mode=modify.html">		<a href="delete.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=444.html">		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+<!-- 목록 부분 시작 -->
+
+
+<td width=25% valign=top>
+<TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0 width=140 class=sjini-box2>
+<tr valign=top onMouseOver=this.style.backgroundColor='F0F0F0' onMouseOut=this.style.backgroundColor=''>
+<td>    
+    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<TR height=140>
+		<TD valign=middle align=center style='padding-left:10; padding-top:10; padding-right:10; padding-bottom:10;' >
+		<a 
+ 		    href='#' 
+ 		    onclick="new_win=window.open('data/photo/ALSeeEdit_IMG_2694.jpg','img_win','left=0,top=0,width=1, height=1, resizable=yes, scrollbar=no,status=no'); new_win.resizeTo(911,693); new_win.focus()" 
+ 		    onMouseOver="viewon('브란데브르크 ', 2); return true;"
+ 		    onMouseOut="viewoff(); return true;"
+ 		    onFocus="this.blur();"
+ 		   ><img src=data/photo/ALSeeEdit_IMG_2694.jpg width=100 height=73.9955357143 border=0>
+		</TD>
+	</TR>
+	<!--	  <tr align=left>
+		<td style='padding-left:10; padding-top:0; padding-right:10; padding-bottom:5;' >
+		<input type=checkbox name=cart value="443">
+		<a href="write.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=443&mode=modify.html">		<a href="delete.phpid=photo&page=2&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=443.html">		</td>
+	  </tr>
+	-->	
+	<!--	  <tr><td class=sjini-dotline></td></tr>
+	  <TR align=center>
+		<td style='padding-left:1; padding-top:10; padding-right:1; padding-bottom:10;' >
+		<img src=skin/sjini_flash_gray/old_head.gif border=0 align=absmiddle>&nbsp;&nbsp;	        </TD>
+	  </TR>
+	-->    </table>
+</td>
+</tr>
+</TABLE>
+</td>
+
+
+       	</tr><tr>
+	 <td colspan=4 class=sjini-blank height=10></td>
+	</tr>
+	<tr align=center>
+<!-- 마무리 부분입니다 -->
+</tr>
+</table>
+
+
+<!-- 버튼 부분 -->
+<table border=0 cellspacing=0 cellpadding=0 width=100%>
+<tr><td colspan=3 class=sjini-blank height=5></td></tr>
+<tr><td colspan=3 class=sjini-dotline></td></tr>
+<tr>
+ <td width=40% height=20 nowrap> 
+   <a onfocus=blur() href="zboard.phpid=photo&page=2&category=&sn=off&ss=on&sc=on&keyword=&prev_no=&sn1=&divpage=1.html"><img src=skin/sjini_flash_gray/img/list.gif border=0 align=absmiddle></a>
+  <Zeroboard <img src=skin/sjini_flash_gray/img/organize.gif border=0 align=absmiddle></a>  
+ </td>
+ <td align=center class=sjini-sfont nowrap>
+   <Zeroboard [prev]</a> <a onfocus=blur() href="zboard.phpid=photo&page=1&select_arrange=headnum&desc=asc&category=&sn=off&ss=on&sc=on&keyword=&sn1=&divpage=1.html"><font style=font-size:8pt>[1]</a> <font style=font-size:8pt><b>2</b> <a onfocus=blur() href="zboard.phpid=photo&page=3&select_arrange=headnum&desc=asc&category=&sn=off&ss=on&sc=on&keyword=&sn1=&divpage=1.html"><font style=font-size:8pt>[3]</a><a onfocus=blur() href="zboard.phpid=photo&page=4&select_arrange=headnum&desc=asc&category=&sn=off&ss=on&sc=on&keyword=&sn1=&divpage=1.html"><font style=font-size:8pt>[4]</a><a onfocus=blur() href="zboard.phpid=photo&page=5&select_arrange=headnum&desc=asc&category=&sn=off&ss=on&sc=on&keyword=&sn1=&divpage=1.html"><font style=font-size:8pt>[5]</a><a onfocus=blur() href="zboard.phpid=photo&page=6&select_arrange=headnum&desc=asc&category=&sn=off&ss=on&sc=on&keyword=&sn1=&divpage=1.html"><font style=font-size:8pt>[6]</a> <Zeroboard [next]</a>
+ </td>
+ <td align=right width=40%>
+  <Zeroboard <img src=skin/sjini_flash_gray/img/write.gif border=0 align=absmiddle></a>
+ </td>
+</tr>
+</form>
+</table>
+
+
+</td>
+</tr>
+</table>
+<br>
+<script>
+print_ZBlayer('zbLayer1', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer2', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer3', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer4', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer5', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer6', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer7', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer8', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer9', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer10', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer11', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer12', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer13', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer14', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer15', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer16', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer17', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer18', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer19', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer20', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer21', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer22', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer23', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer24', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer25', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer26', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer27', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer28', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer29', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer30', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer31', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer32', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer33', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer34', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer35', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer36', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer37', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer38', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer39', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer40', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer41', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer42', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer43', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer44', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer45', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer46', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer47', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer48', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer49', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer50', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer51', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer52', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer53', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer54', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer55', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer56', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer57', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer58', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer59', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer60', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer61', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer62', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer63', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer64', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer65', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer66', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer67', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer68', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer69', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer70', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer71', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer72', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer73', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer74', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer75', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer76', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer77', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer78', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer79', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer80', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer81', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer82', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer83', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer84', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer85', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer86', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer87', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer88', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer89', '', '', '1', 'photo', 'smitadmin', '', '', '', '');
+print_ZBlayer('zbLayer90', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer91', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer92', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer93', 'http://www.+%BE%F8%B4%C2%B5%A5%BF%E4+-.-%3B%3B.com', 'aGpoMjcwMEBrb3JlYS5jb20=', '12', 'photo', 'Jae-Hyun+Hwang', '', '', '', '');
+print_ZBlayer('zbLayer94', '', 'aGpoMjcwMEBpY3UuYWMua3I=', '', 'photo', '%C8%B2%B1%BA', '', '', '', '');
+print_ZBlayer('zbLayer95', '', 'aGpoMjcwMEBpY3UuYWMua3I=', '', 'photo', '%C8%B2%B1%BA', '', '', '', '');
+print_ZBlayer('zbLayer96', '', 'aGpoMjcwMEBpY3UuYWMua3I=', '', 'photo', '%C8%B2%B1%BA', '', '', '', '');
+print_ZBlayer('zbLayer97', '', 'aGpoMjcwMEBpY3UuYWMua3I=', '', 'photo', '%C8%B2%B1%BA', '', '', '', '');
+print_ZBlayer('zbLayer98', '', 'aGpoMjcwMEBpY3UuYWMua3I=', '', 'photo', '%C8%B2%B1%BA', '', '', '', '');
+print_ZBlayer('zbLayer99', '', 'aGpoMjcwMEBpY3UuYWMua3I=', '', 'photo', '%C8%B2%B1%BA', '', '', '', '');
+print_ZBlayer('zbLayer100', '', 'aGpoMjcwMEBpY3UuYWMua3I=', '', 'photo', '%C8%B2%B1%BA', '', '', '', '');
+</script>
+			<table border=0 cellpadding=0 cellspacing=0 height=20 width=650>
+			<tr>
+				<td align=right style=font-family:tahoma,굴림;font-size:8pt;line-height:150%;letter-spacing:0px>
+					<font color="#f1f1f1" style=font-size:7pt>Copyright 1999-2020</font> <a href=http://www.zeroboard.com target=_blank onfocus=blur()><font color="#f1f1f1"  style=font-family:tahoma,굴림;font-size:8pt;>Zeroboard</a> / skin by <a href=http://kimsista.com target=_blank>Sista jini</a>				</td>   
+			</tr>
+			</table>
+
+						<!-- 이미지 리사이즈를 위해서 처리하는 부분 -->
+			<script>
+				function zb_img_check(){
+					var zb_main_table_width = document.zb_get_table_width.width;
+					var zb_target_resize_num = document.zb_target_resize.length;
+					for(i=0;i<zb_target_resize_num;i++){ 
+						if(document.zb_target_resize[i].width > zb_main_table_width) {
+							document.zb_target_resize[i].width = zb_main_table_width;
+						}
+					}
+				}
+				window.onload = zb_img_check;
+			</script>
+
+			</div>
+</body>
+</html>
+			
+
+<!--
+ Session Excuted  : 0.0271
+ Connect Checked  : 0.0034
+ Query Excuted  : 0.020
+ PHP Excuted  : 0.094
+ Check Lists : 0.080
+ Skins Excuted  : 0.208
+ Total Excuted Time : 0.351
+-->
+
+

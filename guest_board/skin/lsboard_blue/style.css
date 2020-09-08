@@ -1,0 +1,31 @@
+
+BODY { scrollbar-3dlight-color:#FFFFFF;
+scrollbar-arrow-color:#3399FF;
+scrollbar-track-color:#FFFFFF;
+scrollbar-darkshadow-color:#FFFFFF;
+scrollbar-face-color:#FFFFFF;
+scrollbar-highlight-color:#FFFFFF;
+scrollbar-shadow-color:#FFFFFF}
+
+
+
+
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-family:tahoma;color:#666666;font-size:9pt;line-height:16pt;}
+
+A:link    {color:#666666;text-decoration:none;}
+A:visited {color:#666666;text-decoration:none;}
+A:active  {color:#666666;text-decoration:none;}
+A:hover  {color:#999999;text-decoration:none;}
+
+.input2 {border-top-style:none; border-right-style:none; border-bottom-style:none; BACKGROUND: url() repeat-x bottom;border-left-style:none; solid;font-size:9pt;color:#;line-height:100%;HEIGHT: 18px}
+.input1 {border:solid 1;background-color:ffffff;border-color:#666666;height=18px;font-family:tahoma;font-size:9pt;color:#666666;}
+.input {border:none;height=18px;font-family:tahoma;font-size:9pt;color:#666666;}
+.submit {border:solid 1 #666666;font-family:verdana;font-size:9pt;color:white;background-color:ffffff; height=18px}
+.thm6 {font-family:verdana;color:#666666;font-size:6pt;font-weight:bold;letter-spacing:-1px}
+.thm7 {font-family:verdana;color:#666666;font-size:7pt}
+.thm8 {font-family:tahoma;color:#666666;font-size:9pt}
+.thm9 {font-family:tahoma;color:#666666;font-size:9pt}
+.page {font-family:tahoma;color:#666666;font-size:7pt}
+.ver7 {font-family:tahoma;color:#666666;font-size:7pt;font-weight:bold;letter-spacing:-1px}
+.in {border:solid 1 #c6c6c6;line-height:120%;background-color:#ffffff;line-height:120%;color:#666666}
+.textarea {border:solid 1;border-color:#ECECEC;font-family:tahoma;font-size:9pt;color:#666666;overflow:auto; background-color:transparent}

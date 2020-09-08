@@ -1,0 +1,33 @@
+body,td,select,input,div,form,textarea,center,option,pre,blockquote {font-size:8pt;font-family:verdana;color:666666;line-height:160%;letter-spacing:-1}
+
+
+a:link     {color:666666;text-decoration:none}
+
+a:visited  {color:666666;text-decoration:none}
+
+a:active   {color:666666;text-decoration:none}
+
+a:hover   {color:999999;text-decoration:none}
+
+
+BODY    { 		scrollbar-face-color: #e8e8e8; 
+			scrollbar-shadow-color: #E7E7E7;
+			scrollbar-highlight-color: #FFFFFF;
+			scrollbar-3dlight-color: #e8e8e8;
+			scrollbar-darkshadow-color:#BDBDBD;
+			scrollbar-track-color:#f1f1f1;
+			scrollbar-arrow-color: #31B5F7
+		}
+
+.input {border-top-style:none; border-right-style:none;border-left-style:none; border-bottom-style:none; background:url(images/dot.gif) repeat-x bottom;height:18px;line-height:120%}
+.rini_input {border-top-style:none; border-right-style:none;border-left-style:none; border-bottom-style:none; background:url(images/dot.gif) repeat-x bottom;height:18px;line-height:120%}
+.rini_submit {border:0; background-color:#FFFFFF;font-family:verdana;font-size:10px;font-weight:bold;letter-spacing:0;line-height:100%;width:55px;height:18px}
+
+.rini_submit2 {border: solid 1;border-color:#F1F1F1; background-color:#FFFFFF;font-family:verdana;font-size:10px;color:#AAAAAA;font-weight:bold;letter-spacing:0;line-height:100%;width:62px;height:18px}
+
+.rini_textarea  {border:solid 1;border-color:#f1f1f1;overflow-x:hidden;overflow-y:auto}
+
+.rini_ver {font-family:verdana;font-size:10px;font-weight:bold;letter-spacing:0}
+.rini_ver2 {font-family:verdana;font-size:10px;letter-spacing:0;}
+.rini_ver3 {font-family:verdana;font-size:10px;letter-spacing:-1}
+.rini_taho {font-family:tahoma;font-size:7pt;letter-spacing:0}
